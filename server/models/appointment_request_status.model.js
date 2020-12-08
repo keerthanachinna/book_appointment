@@ -19,4 +19,4 @@ var appointment_request_status= new mongoose.Schema({
 
 
 
-mongoose.model('appointment_request_status', appointment_request_status);
+module.exports =mongoose.model('appointment_request_status', appointment_request_status);

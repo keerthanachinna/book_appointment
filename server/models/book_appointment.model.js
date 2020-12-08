@@ -35,4 +35,4 @@ var book_appointment= new mongoose.Schema({
 
 
 
-mongoose.model('Book_appointment', book_appointment);
+module.exports =mongoose.model('Book_appointment', book_appointment);

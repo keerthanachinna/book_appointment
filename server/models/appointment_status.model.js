@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-var appointment_status= new mongoose.Schema({
+var appointment_statusSchema= new mongoose.Schema({
     code: {
         type: Number,
         required: 'code can\'t be empty'
@@ -17,4 +17,4 @@ var appointment_status= new mongoose.Schema({
 
 
 
-mongoose.model('appointment_status', appointment_status);
+module.exports =mongoose.model('appointment_status', appointment_statusSchema);

@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const Appointment_session =require('../models/appointment_session.model');
 const slots =require('../models/slot.model');
 const book_appointment =require('../models/book_appointment.model');
+const appointment_req_status =require('../models/appointment_request_status.model');
+const appointment_status =require('../models/appointment_status.model');
 
 
 module.exports.appointment_session = (req, res, next) => {
@@ -56,6 +58,37 @@ module.exports.book_appointment = (req, res, next) => {
     book_app.appointment_request_status = req.body.appointment_request_status;
     book_app.status = 1;
     book_app.save((err, doc) => {
+        if (!err)
+            res.send(doc);
+        else {
+                return next(err);
+        }
+
+    });
+}
+
+module.exports.create_appointment_request = (req, res, next) => {
+    var req_status = new appointment_req_status();
+    req_status.code = req.body.code;
+    req_status.name = req.body.name;
+  
+    req_status.status = 1;
+    req_status.save((err, doc) => {
+        if (!err)
+            res.send(doc);
+        else {
+                return next(err);
+        }
+
+    });
+}
+
+module.exports.create_appointment_status = (req, res, next) => {
+    var app_status = new appointment_status();
+    app_status.code = req.body.code;
+    app_status.name = req.body.name;
+    app_status.status = 1;
+    app_status.save((err, doc) => {
         if (!err)
             res.send(doc);
         else {
